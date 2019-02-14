@@ -1,5 +1,6 @@
 package com.clarkstoro.android_kotlin_examples
 
+import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -7,6 +8,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.UiThread
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.GsonBuilder
+import com.google.gson.internal.bind.JsonTreeReader
+import com.google.gson.stream.JsonReader
+import kotlinx.android.synthetic.main.fragment_array_list.view.*
+import kotlinx.android.synthetic.main.fragment_jsonarraylist.view.*
+import okhttp3.*
+import java.io.IOException
+import java.net.URL
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -41,8 +52,45 @@ class JSONArrayListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_jsonarraylist, container, false)
+
+        var view : View = inflater.inflate(R.layout.fragment_jsonarraylist, container, false)
+
+
+        view.myRecyclerViewJSON.setLayoutManager( LinearLayoutManager(context));
+
+        //val adapter = ListAdapter(users,requireContext())
+
+        fetchJSON()
+
+        return view
+    }
+
+    fun fetchJSON(){
+
+        val url = "https://reqres.in/api/users?page=2"
+
+        val request = Request.Builder().url(url).build()
+        val client = OkHttpClient()
+        client.newCall(request).enqueue(object: Callback {
+            override fun onResponse(call: Call, response: Response) {
+                val body = response?.body()?.string()
+
+                val gson = GsonBuilder().create()
+
+                val user = gson.fromJson(body, Users::class.java)
+
+                activity?.runOnUiThread {
+                    val adapter = ListAdapterJSON(user,requireContext())
+                    view?.myRecyclerViewJSON?.adapter = adapter
+                }
+
+
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Could not retrieve JSON")
+            }
+        })
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -18,7 +18,6 @@ class ListAdapter (val items : ArrayList<String>, val context: Context) : Recycl
 
         val nameOfUser = items.get(position)
         holder.itemView.txtName.text = (nameOfUser)
-         //holder?.?.text(nameOfUser)
 
     }
 
@@ -30,8 +29,6 @@ class ListAdapter (val items : ArrayList<String>, val context: Context) : Recycl
 }
 class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
-
-        val tvAnimalType = view.txtName
     val txtName = view.txtName
 
 

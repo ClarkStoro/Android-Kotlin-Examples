@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    public fun openNav(){
+    fun openNav(){
         drawer_layout.openDrawer(GravityCompat.START)
     }
 
