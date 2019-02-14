@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
@@ -37,7 +36,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-
+        //Start the home fragment
         selectFragment(HomeFragment())
     }
 
@@ -47,6 +46,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         } else {
             super.onBackPressed()
         }
+    }
+
+    public fun openNav(){
+        drawer_layout.openDrawer(GravityCompat.START)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -67,7 +70,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-
     //Create fragment selected for showing
     private fun selectFragment(frgClass: Fragment){
         var fragment: Fragment? = null
@@ -79,13 +81,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         replaceFragment(fragment as Fragment)
-    }
+    }//end replaceFragment
 
     //Show the fragment selected
     private fun replaceFragment(fragment: Fragment){
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-
 
         if(fragment::class == HomeFragment::class){
             if(firstTime){ //the first time the system opens Home Fragment is onCreate
@@ -100,7 +101,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             fragmentTransaction.replace(R.id.content_main, fragment).addToBackStack(null)//add to stack the new fragment
         }
         fragmentTransaction.commit()
-    }
+    }//end replaceFragment
 
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -122,5 +123,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
-    }
+    }//end onNavigationItemSelected
 }

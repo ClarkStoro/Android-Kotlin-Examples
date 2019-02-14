@@ -1,5 +1,6 @@
 package com.clarkstoro.android_kotlin_examples
 
+import android.app.AlertDialog
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -7,6 +8,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_array_list.view.*
+import java.util.ArrayList
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -29,6 +35,7 @@ class ArrayListFragment : Fragment() {
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -41,8 +48,19 @@ class ArrayListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_array_list, container, false)
+
+        val view  : View = inflater.inflate(R.layout.fragment_array_list, container, false)
+
+
+        //Create array of users
+        val users = arrayListOf<String>("Anna", "Joel", "Mark", "Veronica", "Noel", "Hilary")
+        view.myRecyclerView.setLayoutManager( LinearLayoutManager(context));
+        val adapter = ListAdapter(users,requireContext())
+        //Set the adapter to the list
+        view.myRecyclerView.adapter = adapter
+
+
+        return view
     }
 
     // TODO: Rename method, update argument and hook method into UI event

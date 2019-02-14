@@ -7,6 +7,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowId
+import android.widget.Button
+import android.widget.Toast
+import androidx.core.view.GravityCompat
+import androidx.transition.Slide
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -23,7 +33,11 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  *
  */
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), View.OnClickListener {
+    override fun onClick(v: View?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -35,14 +49,24 @@ class HomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+
+
+        val view: View = inflater!!.inflate(R.layout.fragment_home, container, false)
+        //Click listener on a fragment
+        view.btnStart.setOnClickListener { view ->
+            //open the navigation bar
+            (activity as MainActivity).openNav()
+        }
+
+        return view
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -50,16 +74,7 @@ class HomeFragment : Fragment() {
         listener?.onFragmentInteraction(uri)
     }
 
-    /*
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-        }
-    }
-*/
+
     override fun onDetach() {
         super.onDetach()
         listener = null

@@ -5,10 +5,10 @@
              tools:context=".HomeFragment" android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:background="#00ff00">
+            android:layout_height="match_parent" android:background="#ffffff">
 
         <TextView
-                android:text="Hello Home Fragment"
+                android:text="Hi Developer!"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/textView2"
                 android:textSize="25sp" android:layout_marginTop="8dp"
@@ -16,5 +16,30 @@
                 app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="8dp"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+                android:text="Here for you some basics examples on Android Kotlin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" android:id="@+id/textView5"
+                android:textSize="20sp" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="50dp"
+                android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/textView2"
+                android:layout_marginEnd="50dp"
+                android:textAlignment="center"/>
+        <Button
+                android:text="LET'S START"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnStart" android:layout_marginTop="50dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"/>
+        <ImageView
+                android:src="@android:color/holo_blue_bright"
+                android:layout_width="151dp"
+                android:layout_height="163dp"
+                android:id="@+id/imageView2" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" android:layout_marginTop="30dp"
+                app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
