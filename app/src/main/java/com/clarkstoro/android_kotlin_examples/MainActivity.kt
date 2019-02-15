@@ -1,7 +1,6 @@
 package com.clarkstoro.android_kotlin_examples
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -9,13 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import com.clarkstoro.android_kotlin_examples.ArrayList.ArrayListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import android.R.attr.fragment
-import android.view.LayoutInflater
-import android.widget.LinearLayout
-import androidx.fragment.app.FragmentManager
-import kotlinx.android.synthetic.main.content_main.*
+import com.clarkstoro.android_kotlin_examples.JSONArrayList.JSONArrayListFragment
 import java.lang.ClassCastException
 
 

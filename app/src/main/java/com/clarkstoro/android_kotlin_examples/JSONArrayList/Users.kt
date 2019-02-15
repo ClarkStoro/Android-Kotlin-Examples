@@ -1,6 +1,5 @@
-package com.clarkstoro.android_kotlin_examples
+package com.clarkstoro.android_kotlin_examples.JSONArrayList
 
-import android.net.Uri
 
 
 class Users (val data: List<User>)

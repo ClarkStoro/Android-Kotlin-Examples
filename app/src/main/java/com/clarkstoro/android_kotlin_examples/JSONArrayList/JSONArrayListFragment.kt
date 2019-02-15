@@ -1,18 +1,17 @@
-package com.clarkstoro.android_kotlin_examples
+package com.clarkstoro.android_kotlin_examples.JSONArrayList
 
-import android.app.AlertDialog
-import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_array_list.view.*
-import java.util.ArrayList
+import com.clarkstoro.android_kotlin_examples.R
+import com.google.gson.GsonBuilder
+import kotlinx.android.synthetic.main.fragment_jsonarraylist.view.*
+import okhttp3.*
+import java.io.IOException
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -23,18 +22,17 @@ private const val ARG_PARAM2 = "param2"
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [ArrayListFragment.OnFragmentInteractionListener] interface
+ * [JSONArrayListFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [ArrayListFragment.newInstance] factory method to
+ * Use the [JSONArrayListFragment.newInstance] factory method to
  * create an instance of this fragment.
  *
  */
-class ArrayListFragment : Fragment() {
+class JSONArrayListFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,25 +47,51 @@ class ArrayListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view  : View = inflater.inflate(R.layout.fragment_array_list, container, false)
+        var view : View = inflater.inflate(R.layout.fragment_jsonarraylist, container, false)
 
 
-        //Create array of users
-        val users = arrayListOf<String>("Anna", "Joel", "Mark", "Veronica", "Noel", "Hilary")
-        view.myRecyclerView.setLayoutManager( LinearLayoutManager(context));
-        val adapter = ListAdapter(users,requireContext())
-        //Set the adapter to the list
-        view.myRecyclerView.adapter = adapter
+        view.myRecyclerViewJSON.setLayoutManager( LinearLayoutManager(context));
 
+        //val adapter = ListAdapter(users,requireContext())
+
+        fetchJSON()
 
         return view
+    }
+
+    fun fetchJSON(){
+
+        val url = "https://reqres.in/api/users?page=2"
+
+        val request = Request.Builder().url(url).build()
+        val client = OkHttpClient()
+        client.newCall(request).enqueue(object: Callback {
+            override fun onResponse(call: Call, response: Response) {
+                val body = response?.body()?.string()
+
+                val gson = GsonBuilder().create()
+
+                val user = gson.fromJson(body, Users::class.java)
+
+                activity?.runOnUiThread {
+                    val adapter =
+                        ListAdapterJSON(user, requireContext())
+                    view?.myRecyclerViewJSON?.adapter = adapter
+                }
+
+
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                println("Could not retrieve JSON")
+            }
+        })
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
         listener?.onFragmentInteraction(uri)
     }
-
 
     override fun onDetach() {
         super.onDetach()
@@ -97,12 +121,12 @@ class ArrayListFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment ArrayListFragment.
+         * @return A new instance of fragment JSONArrayListFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            ArrayListFragment().apply {
+            JSONArrayListFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
