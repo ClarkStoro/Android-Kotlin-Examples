@@ -12,6 +12,8 @@ import com.clarkstoro.android_kotlin_examples.ArrayList.ArrayListFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import com.clarkstoro.android_kotlin_examples.JSONArrayList.JSONArrayListFragment
+import com.clarkstoro.android_kotlin_examples.dbLocale.dbLocaleFragment
+import kotlinx.android.synthetic.main.fragment_db_locale.*
 import java.lang.ClassCastException
 
 
@@ -110,6 +112,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_json_array_list ->{
                 selectFragment(JSONArrayListFragment())
+            }
+            R.id.nav_dbLocale ->{
+                selectFragment(dbLocaleFragment())
             }
 
             else ->{

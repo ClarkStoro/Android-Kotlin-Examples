@@ -66,6 +66,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
             (activity as MainActivity).openNav()
         }
 
+        view.fabHello.setOnClickListener { view ->
+            Snackbar.make( view, "Hi again dev! ;)", Snackbar.LENGTH_SHORT).show()
+        }
+
         return view
     }
 
