@@ -8,9 +8,9 @@ import kotlinx.android.synthetic.main.fragment_db_locale.view.*
 
 class DBOperations(val context: Context, val view: View) {
 
-    fun insertData(IDProduct: Int, nameProduct: String, descriptionProduct: String){
-        if((nameProduct != null)&&(nameProduct.length > 0)&&(descriptionProduct != null)&&(descriptionProduct.length > 0)) {
-            var product = Product(IDProduct, nameProduct, descriptionProduct)
+    fun insertData(IDProduct: String, nameProduct: String, descriptionProduct: String){
+        if((IDProduct != "")&&(nameProduct != null)&&(nameProduct.length > 0)&&(descriptionProduct != null)&&(descriptionProduct.length > 0)) {
+            var product = Product(IDProduct.toInt(), nameProduct, descriptionProduct)
             var db = DatabaseHandler(context!!)
             var result = db.insertData(product)
             if(result){
@@ -23,6 +23,8 @@ class DBOperations(val context: Context, val view: View) {
             }else{
                 Snackbar.make(view, "Fail, product not saved!", Snackbar.LENGTH_LONG).show()
             }
+        }else{
+            Snackbar.make(view, "Fill all the fields", Snackbar.LENGTH_LONG).show()
         }
     }//end insertData
 
@@ -36,9 +38,9 @@ class DBOperations(val context: Context, val view: View) {
         }
     }//end insertData
 
-    fun updateData(oldIDProduct: Int, IDProduct: Int, nameProduct: String, descriptionProduct: String){
-        if((nameProduct != null)&&(nameProduct.length > 0)&&(descriptionProduct != null)&&(descriptionProduct.length > 0)) {
-            var product = Product(IDProduct, nameProduct, descriptionProduct)
+    fun updateData(oldIDProduct: Int, IDProduct: String, nameProduct: String, descriptionProduct: String){
+        if((IDProduct != "")&&(nameProduct != null)&&(nameProduct.length > 0)&&(descriptionProduct != null)&&(descriptionProduct.length > 0)) {
+            var product = Product(IDProduct.toInt(), nameProduct, descriptionProduct)
             var db = DatabaseHandler(context!!)
             var result = db.updateData(product, oldIDProduct)
             if(result){

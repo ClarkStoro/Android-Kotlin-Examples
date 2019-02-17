@@ -56,7 +56,7 @@ class ProductAdapater (val products : Products, val context: Context) : Recycler
                     val nameProduct = products.productsList.get(position).name
                     val descriptionProduct = products.productsList.get(position).description
 
-                    dbOperations.insertData(IDProduct, nameProduct, descriptionProduct)
+                    dbOperations.insertData(IDProduct.toString(), nameProduct, descriptionProduct)
                 })
                 snackbar.setText("Product deleted").show()
             }else{

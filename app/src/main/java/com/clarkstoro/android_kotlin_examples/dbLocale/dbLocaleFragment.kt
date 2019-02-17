@@ -47,11 +47,12 @@ class dbLocaleFragment : Fragment(){
             var edtNameProduct = activity?.findViewById(R.id.edtProductName) as EditText
             var edtDescriptionProduct = activity?.findViewById(R.id.edtProductDescription) as EditText
 
-            var IDProductProduct = edtIDProduct.text.toString().toInt()
+            var IDProductProduct = edtIDProduct.text.toString()
             var nameProduct = edtNameProduct.text.toString()
             var descriptionProduct = edtDescriptionProduct.text.toString()
 
-            dbOperations.insertData(IDProductProduct, nameProduct, descriptionProduct)
+
+           dbOperations.insertData(IDProductProduct, nameProduct, descriptionProduct)
 
         }//end onClickListener
 
@@ -60,7 +61,7 @@ class dbLocaleFragment : Fragment(){
             var edtNameProduct = activity?.findViewById(R.id.edtProductName) as EditText
             var edtDescriptionProduct = activity?.findViewById(R.id.edtProductDescription) as EditText
 
-            var IDProductProduct = edtIDProduct.text.toString().toInt()
+            var IDProductProduct = edtIDProduct.text.toString()
             var nameProduct = edtNameProduct.text.toString()
             var descriptionProduct = edtDescriptionProduct.text.toString()
 
