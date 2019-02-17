@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.fragment_db_locale.view.*
 
 class DBOperations(val context: Context, val view: View) {
 
-    fun insertData(IDProduct: String, nameProduct: String, descriptionProduct: String){
+    fun insertData(IDProduct: Int, nameProduct: String, descriptionProduct: String){
         if((nameProduct != null)&&(nameProduct.length > 0)&&(descriptionProduct != null)&&(descriptionProduct.length > 0)) {
             var product = Product(IDProduct, nameProduct, descriptionProduct)
             var db = DatabaseHandler(context!!)
@@ -26,51 +26,72 @@ class DBOperations(val context: Context, val view: View) {
         }
     }//end insertData
 
-    /*
-    fun deleteData(id: Int){
 
+    //Insert a list of products
+    fun insertData(products: Products){
         var db = DatabaseHandler(context!!)
-        var result = db.deleteData(id)
-
-        if(result){
-            Snackbar.make(view, "Product deleted", Snackbar.LENGTH_SHORT)
-        }else{
-            Snackbar.make(view, "Fail, could not delete product", Snackbar.LENGTH_SHORT)
+        for( product in products.productsList ){
+            db.insertData(product)
+            displayAllData()
         }
+    }//end insertData
 
+    fun updateData(oldIDProduct: Int, IDProduct: Int, nameProduct: String, descriptionProduct: String){
+        if((nameProduct != null)&&(nameProduct.length > 0)&&(descriptionProduct != null)&&(descriptionProduct.length > 0)) {
+            var product = Product(IDProduct, nameProduct, descriptionProduct)
+            var db = DatabaseHandler(context!!)
+            var result = db.updateData(product, oldIDProduct)
+            if(result){
+                displayAllData()
+                //Resetting text
+                view?.edtProductIDProduct?.setText("")
+                view?.edtProductName?.setText("")
+                view?.edtProductDescription?.setText("")
 
-    }//end deleteData by id
-    */
+                dbLocaleFragment.oldIDProduct = 0
+
+                Snackbar.make(view, "Product updated", Snackbar.LENGTH_LONG).show()
+            }else{
+                Snackbar.make(view, "Fail, product not updated!", Snackbar.LENGTH_LONG).show()
+            }
+        }
+    }//end updateData
+
 
     //Delete products with the IDProduct given
-    fun deleteData(IDProduct: String){
+    fun deleteData(IDProduct: Int) : Boolean {
         var db = DatabaseHandler(context!!)
         var result = db.deleteData(IDProduct)
 
         if(result){
             displayAllData()
-            //Snackbar.make(view, "Product deleted", Snackbar.LENGTH_SHORT).show()
-        }else{
-            //Snackbar.make(view, "Fail, could not delete product", Snackbar.LENGTH_SHORT).show()
         }
+        return result
     }//end deleteData by IDProduct
 
-
-
-    //Retrieve and display on RecyclerView data
-    fun displayAllData(){
-        view?.dbLocaleRecyclerView?.setLayoutManager( LinearLayoutManager(context));
+    fun getAllData() : Products{
         var db = DatabaseHandler(context!!)
         //Get data from SQLite
         var products = db.retrieveAllData()
 
+        return products
+    }//end getAllData
+
+    //Retrieve and display on RecyclerView data
+    fun displayAllData(){
+        val products = getAllData()
         val adapter = ProductAdapater(products, context)
         //Set the adapter to the list
         view?.dbLocaleRecyclerView?.adapter = adapter
     }//end displayAllData
 
-    fun deleteAllData(){
-
+    fun deleteAllData() : Boolean {
+        var db = DatabaseHandler(context!!)
+        var result = db.deleteAllData()
+        if(result){
+            displayAllData()
+        }
+        return result
     }//end deleteAllData
 
 

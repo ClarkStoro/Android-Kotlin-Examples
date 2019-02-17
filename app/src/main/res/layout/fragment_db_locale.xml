@@ -28,7 +28,7 @@
             <EditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:ems="10"
                     android:id="@+id/edtProductIDProduct"
                     app:layout_constraintEnd_toStartOf="@+id/btnSubmit"
@@ -55,18 +55,37 @@
                     android:ems="10"
                     android:id="@+id/edtProductDescription"
                     app:layout_constraintEnd_toStartOf="@+id/btnSubmit"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintTop_toBottomOf="@+id/edtProductName"
                     android:hint="Product description" android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="8dp"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"/>
             <Button
                     android:text="SUBMIT"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content" android:id="@+id/btnSubmit"
                     app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-                    android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.866"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="8dp" android:textSize="12sp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/btnUpdate"/>
+            <Button
+                    android:text="DELETE ALL DATA"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnDeleteAllData" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp" app:layout_constraintStart_toEndOf="@+id/edtProductIDProduct"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="12sp"/>
+            <Button
+                    android:text="UPDATE"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:id="@+id/btnUpdate"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/btnDeleteAllData"
+                    android:layout_marginEnd="16dp" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/edtProductName" android:layout_marginStart="8dp"
+                    android:textSize="12sp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

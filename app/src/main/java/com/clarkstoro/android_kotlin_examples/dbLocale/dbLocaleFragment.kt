@@ -17,6 +17,11 @@ import kotlinx.android.synthetic.main.products_list_item.view.*
 
 class dbLocaleFragment : Fragment(){
 
+    companion object {
+        var oldIDProduct = 0
+    }
+
+
     override fun onStart() {
         super.onStart()
     }
@@ -42,7 +47,7 @@ class dbLocaleFragment : Fragment(){
             var edtNameProduct = activity?.findViewById(R.id.edtProductName) as EditText
             var edtDescriptionProduct = activity?.findViewById(R.id.edtProductDescription) as EditText
 
-            var IDProductProduct = edtIDProduct.text.toString()
+            var IDProductProduct = edtIDProduct.text.toString().toInt()
             var nameProduct = edtNameProduct.text.toString()
             var descriptionProduct = edtDescriptionProduct.text.toString()
 
@@ -50,7 +55,31 @@ class dbLocaleFragment : Fragment(){
 
         }//end onClickListener
 
+        view.btnUpdate.setOnClickListener{view ->
+            var edtIDProduct = activity?.findViewById(R.id.edtProductIDProduct) as EditText
+            var edtNameProduct = activity?.findViewById(R.id.edtProductName) as EditText
+            var edtDescriptionProduct = activity?.findViewById(R.id.edtProductDescription) as EditText
 
+            var IDProductProduct = edtIDProduct.text.toString().toInt()
+            var nameProduct = edtNameProduct.text.toString()
+            var descriptionProduct = edtDescriptionProduct.text.toString()
+
+            dbOperations.updateData(oldIDProduct, IDProductProduct, nameProduct, descriptionProduct)
+        }
+
+        view.btnDeleteAllData.setOnClickListener{view ->
+            val products = dbOperations.getAllData()
+            val result = dbOperations.deleteAllData()
+            if(result){
+                Snackbar.make(view, "All products deleted", Snackbar.LENGTH_SHORT)
+                    .setAction("UNDO", View.OnClickListener { v ->
+                        dbOperations.insertData(products)
+                    })
+                    .show()
+            }
+        }
+
+        view?.dbLocaleRecyclerView?.setLayoutManager( LinearLayoutManager(context));
         dbOperations.displayAllData()
 
         return view

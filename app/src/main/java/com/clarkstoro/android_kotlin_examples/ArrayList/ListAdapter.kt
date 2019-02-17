@@ -24,7 +24,7 @@ class ListAdapter (val items : ArrayList<String>, val context: Context) : Recycl
         //holder?.txtName?.text = items.get(position)
 
         val nameOfUser = items.get(position)
-        holder.itemView.edtProductName.text = (nameOfUser)
+        holder.itemView.txtProductName.text = (nameOfUser)
 
     }
 

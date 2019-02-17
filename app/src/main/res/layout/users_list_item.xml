@@ -8,11 +8,11 @@
     <TextView
             android:text="TextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/edtProductName" android:background="#00ff00"
+            android:layout_height="wrap_content" android:id="@+id/txtProductName" android:background="#00ff00"
             android:textSize="24sp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-        />
+    />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

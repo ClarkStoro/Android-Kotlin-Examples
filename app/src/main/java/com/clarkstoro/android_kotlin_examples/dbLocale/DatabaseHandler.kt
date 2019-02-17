@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.google.android.material.snackbar.Snackbar
 import java.lang.Exception
 
 val DATABASE_NAME = "DBProduct"
@@ -13,12 +12,13 @@ val COL_ID = "id"
 val COL_IDPRODUCT = "IDProduct"
 val COL_NAME = "Name"
 val COL_DESCRIPTION = "Description"
+
 class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1){
     override fun onCreate(db: SQLiteDatabase?) {
 
         val createTable = "CREATE TABLE " + TABLE_NAME + " (" +
                             COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                            COL_IDPRODUCT + " TEXT, " +
+                            COL_IDPRODUCT + " INTEGER, " +
                             COL_NAME + " TEXT, " +
                             COL_DESCRIPTION + " TEXT );"
 
@@ -31,7 +31,7 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
     }
 
 
-    //Insert a record on db
+    //Insert a record in db
     fun insertData(product: Product) : Boolean{
         val db = this.writableDatabase
         var contentValues = ContentValues()
@@ -47,9 +47,27 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         }
     }//end insertData
 
-    //Get all data
+    fun updateData(product: Product, oldIDProduct: Int): Boolean {
+        var result = false
+        try {
+            val db = this.writableDatabase
+            var contentValues = ContentValues()
+            contentValues.put(COL_IDPRODUCT, product.IDProduct)
+            contentValues.put(COL_NAME, product.name)
+            contentValues.put(COL_DESCRIPTION, product.description)
+            db.update(TABLE_NAME, contentValues, COL_IDPRODUCT + " = ?", arrayOf(oldIDProduct.toString()))
+            db.close()
+            result = true
+        }catch (e : Exception){
+            println(e)
+        }
+
+        return result
+    }
+
+    //Get all data from db
     fun retrieveAllData() : Products {
-        val query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COL_ID
+        val query = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COL_IDPRODUCT
         val db = this.readableDatabase
         val cursor = db.rawQuery(query, null)
         val productsList = mutableListOf<Product>()
@@ -57,7 +75,7 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         if (cursor.moveToFirst()) {
             do {
                 val id = Integer.parseInt(cursor.getString(0))
-                val IDProduct = cursor.getString(1)
+                val IDProduct = Integer.parseInt(cursor.getString(1))
                 val name = cursor.getString(2)
                 val description = cursor.getString(3)
                 val product = Product(IDProduct, name, description)
@@ -75,21 +93,33 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         return products
     }//end retrieveAllData
 
-
-    fun deleteData(id : String) : Boolean{
-
+    //Delete records with the IDProduct passed, in case there are ultiple record with the same IDProduct every record will be delete!
+    fun deleteData(IDProduct : Int) : Boolean{
         var result = false
-
         try {
             val db = this.writableDatabase
-            println(arrayOf(id))
-            db.delete(TABLE_NAME, COL_IDPRODUCT + " = ?", arrayOf(id))
-            result = true
+            db.delete(TABLE_NAME, COL_IDPRODUCT + " = ?", arrayOf(IDProduct.toString()))
             db.close()
+            result = true
         }catch (e: Exception) {
             println(e)
         }
 
         return result
+    }//end deleteData
+
+
+    fun deleteAllData() : Boolean {
+        var result = false
+        try {
+            val db = this.writableDatabase
+            db.delete(TABLE_NAME, "1", null)
+            db.close()
+            result = true
+        }catch (e : Exception){
+            println(e)
         }
-    }
+
+        return result
+    }//end deleteAllData
+}
