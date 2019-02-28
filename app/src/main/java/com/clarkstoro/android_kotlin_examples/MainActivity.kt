@@ -9,10 +9,12 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.clarkstoro.android_kotlin_examples.ArrayList.ArrayListFragment
+import com.clarkstoro.android_kotlin_examples.FirebaseData.FirebaseData
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import com.clarkstoro.android_kotlin_examples.JSONArrayList.JSONArrayListFragment
 import com.clarkstoro.android_kotlin_examples.dbLocale.dbLocaleFragment
+import com.google.firebase.FirebaseApp
 import kotlinx.android.synthetic.main.fragment_db_locale.*
 import java.lang.ClassCastException
 
@@ -115,6 +117,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_dbLocale ->{
                 selectFragment(dbLocaleFragment())
+            }
+            R.id.nav_firebaseData ->{
+                FirebaseApp.initializeApp(this)
+                selectFragment(FirebaseData())
             }
 
             else ->{
