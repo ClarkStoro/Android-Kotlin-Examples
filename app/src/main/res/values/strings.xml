@@ -14,7 +14,8 @@
     <!-- Write your strings here -->
     <string name="hello_dev">Hello dev! 😉</string>
     <string name="translations_guide" translatable="false">
-        To make this working you only need to place on strings, click on open editor and then on the top click on the "+" to add a language.
+        To make this working you only need to place on strings, click on open editor and then on the top click on the
+        "+" to add a language.
         It will create a new string file where you can place your strings with the same name translated
     </string>
 </resources>
