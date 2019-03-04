@@ -14,6 +14,7 @@ import com.clarkstoro.android_kotlin_examples.FirebaseList.FirebaseList
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import com.clarkstoro.android_kotlin_examples.JSONArrayList.JSONArrayListFragment
+import com.clarkstoro.android_kotlin_examples.Translations.Translations
 import com.clarkstoro.android_kotlin_examples.dbLocale.dbLocaleFragment
 import com.google.firebase.FirebaseApp
 import kotlinx.android.synthetic.main.fragment_db_locale.*
@@ -124,7 +125,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 selectFragment(FirebaseData())
             }
             R.id.nav_firebaseList ->{
-                   selectFragment(FirebaseList())
+                selectFragment(FirebaseList())
+            }
+            R.id.nav_translations -> {
+                selectFragment(Translations())
             }
 
             else ->{

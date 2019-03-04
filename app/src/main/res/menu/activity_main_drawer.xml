@@ -28,6 +28,10 @@
                 android:id="@+id/nav_firebaseList"
                 android:icon="@drawable/ic_menu_manage"
                 android:title="Firebase List"/>
+        <item
+                android:id="@+id/nav_translations"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Translations"/>
     </group>
 
     <item android:title="Communicate">
