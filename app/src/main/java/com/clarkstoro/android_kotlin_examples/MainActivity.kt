@@ -10,6 +10,7 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.clarkstoro.android_kotlin_examples.AdMob.AdMob
 import com.clarkstoro.android_kotlin_examples.ArrayList.ArrayListFragment
+import com.clarkstoro.android_kotlin_examples.FirebaseAuth.FirebaseAuth
 import com.clarkstoro.android_kotlin_examples.FirebaseData.FirebaseData
 import com.clarkstoro.android_kotlin_examples.FirebaseList.FirebaseList
 import kotlinx.android.synthetic.main.activity_main.*
@@ -127,6 +128,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_firebaseList ->{
                 selectFragment(FirebaseList())
+            }
+            R.id.nav_firebaseAuth ->{
+               selectFragment(FirebaseAuth())
             }
             R.id.nav_translations -> {
                 selectFragment(Translations())

@@ -29,6 +29,10 @@
                 android:icon="@drawable/ic_menu_manage"
                 android:title="Firebase List"/>
         <item
+                android:id="@+id/nav_firebaseAuth"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Firebase Auth"/>
+        <item
                 android:id="@+id/nav_admob"
                 android:icon="@drawable/ic_menu_manage"
                 android:title="Firebase AdMob"/>
