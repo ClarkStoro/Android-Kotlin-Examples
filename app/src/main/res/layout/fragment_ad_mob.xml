@@ -32,8 +32,11 @@
             android:text="SHOW INTERSTITIAL AD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnInterstitialAd" android:layout_marginTop="32dp"
+            android:id="@+id/btnInterstitialAd" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/adViewSmart" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/my_rounded_button" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:paddingRight="10dp" android:paddingLeft="10dp"
+            android:textColor="@android:color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

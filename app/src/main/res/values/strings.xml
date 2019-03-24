@@ -18,4 +18,7 @@
         "+" to add a language.
         It will create a new string file where you can place your strings with the same name translated
     </string>
+    <string name="cloud_messaging_guide" translatable="false">
+        You should check my github page to see the code.\nIf you want to try this functionality you have to create your personal firebase project.\n\nHappy coding! 😉
+    </string>
 </resources>
