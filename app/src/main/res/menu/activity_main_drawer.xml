@@ -6,57 +6,43 @@
     <group android:checkableBehavior="single">
         <item
                 android:id="@+id/nav_home"
-                android:icon="@drawable/ic_menu_camera"
+                android:icon="@drawable/ic_menu_home"
                 android:title="Home"/>
         <item
                 android:id="@+id/nav_array_list"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_menu_arraylist"
                 android:title="Array List"/>
         <item
                 android:id="@+id/nav_json_array_list"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/ic_menu_jsonarraylist"
                 android:title="JSON Array List"/>
         <item
                 android:id="@+id/nav_dbLocale"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_menu_dblocale"
                 android:title="dbLocale"/>
         <item
+                android:id="@+id/nav_translations"
+                android:icon="@drawable/ic_menu_translations"
+                android:title="Translations"/>
+        <item
                 android:id="@+id/nav_firebaseData"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_menu_firebasedata"
                 android:title="Firebase Data"/>
         <item
                 android:id="@+id/nav_firebaseList"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_menu_firebaselist"
                 android:title="Firebase List"/>
         <item
                 android:id="@+id/nav_firebaseAuth"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_menu_auth"
                 android:title="Firebase Auth"/>
         <item
                 android:id="@+id/nav_fcm"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_menu_cloudmessaging"
                 android:title="Firebase Cloud Messaging"/>
         <item
                 android:id="@+id/nav_admob"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_menu_admob"
                 android:title="Firebase AdMob"/>
-        <item
-                android:id="@+id/nav_translations"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Translations"/>
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_menu_share"
-                    android:title="Share"/>
-            <item
-                    android:id="@+id/nav_send"
-                    android:icon="@drawable/ic_menu_send"
-                    android:title="Send"/>
-        </menu>
-    </item>
-
 </menu>

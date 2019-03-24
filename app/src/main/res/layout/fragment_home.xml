@@ -26,7 +26,7 @@
                 android:layout_marginEnd="50dp"
                 android:textAlignment="center"/>
         <Button
-                android:text="LET'S START"
+                android:text="GET STARTED"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnStart" android:layout_marginTop="50dp"

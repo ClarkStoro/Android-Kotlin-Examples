@@ -63,16 +63,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
-
 
 
     //Create fragment selected for showing
@@ -123,6 +113,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_dbLocale ->{
                 selectFragment(dbLocaleFragment())
             }
+            R.id.nav_translations -> {
+               selectFragment(Translations())
+            }
             R.id.nav_firebaseData ->{
                 FirebaseApp.initializeApp(this)
                 selectFragment(FirebaseData())
@@ -135,9 +128,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.nav_fcm -> {
                 selectFragment(FirebaseCloudMessagging())
-            }
-            R.id.nav_translations -> {
-                selectFragment(Translations())
             }
             R.id.nav_admob -> {
                 selectFragment(AdMob())
