@@ -14,9 +14,8 @@
     <!-- Write your strings here -->
     <string name="hello_dev">Hello dev! 😉</string>
     <string name="translations_guide" translatable="false">
-        To make this working you only need to place on strings, click on open editor and then on the top click on the
-        "+" to add a language.
-        It will create a new string file where you can place your strings with the same name translated
+        To make this work you only need to place on file strings.xml, click on open editor and then, on the top, click the
+        "+" to add a language.\nIt will create a new string file where you will place your strings translated with the same name attribute.
     </string>
     <string name="cloud_messaging_guide" translatable="false">
         You should check my github page to see the code.\nIf you want to try this functionality you have to create your personal firebase project.\n\nHappy coding! 😉
