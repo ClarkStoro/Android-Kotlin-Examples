@@ -32,7 +32,7 @@ class AdMob : Fragment() {
 
         val v : View = inflater.inflate(R.layout.fragment_ad_mob, container, false)
 
-        MobileAds.initialize(context, "ca-app-pub-8270965522829708~7333725969") //put your Admob ID
+        MobileAds.initialize(context, "ca-app-pub-8270965522829708~7333725969") //put your ADmob ID
 
         //Banners
         mAdViewRectangle = v?.findViewById(R.id.adViewRectangle)!!
