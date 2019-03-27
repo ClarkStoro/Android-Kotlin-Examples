@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.clarkstoro.android_kotlin_examples.R
+import com.google.android.material.snackbar.Snackbar
 
 import kotlinx.android.synthetic.main.fragment_firebase_list.view.*
 import com.google.firebase.firestore.*
@@ -101,12 +102,16 @@ class FirebaseList : Fragment() {
             val stateName = edtStateName.text.toString()
             val cityPopulation = edtPopulation.text.toString().toLongOrNull()
 
-            firebaseOp.addCity(cityID, cityName, stateName, cityPopulation)
+            if((!cityID.equals(""))&&(!cityName.equals(""))&&(!stateName.equals(""))&&(cityPopulation != null)){
+                firebaseOp.addCity(cityID, cityName, stateName, cityPopulation)
 
-            edtID.setText("")
-            edtCityName.setText("")
-            edtStateName.setText("")
-            edtPopulation.setText("")
+                edtID.setText("")
+                edtCityName.setText("")
+                edtStateName.setText("")
+                edtPopulation.setText("")
+            }else{
+                Snackbar.make(v, "Some fields are empty", Snackbar.LENGTH_SHORT).show()
+            }
         }
 
         v.btnUpdateName.setOnClickListener{v ->
@@ -116,12 +121,17 @@ class FirebaseList : Fragment() {
             val edtPopulation = activity?.findViewById(R.id.edtPopulation) as EditText
             val cityID = edtID.text.toString()
             val cityName = edtCityName.text.toString()
-            firebaseOp.updateCityName(cityID, cityName)
 
-            edtID.setText("")
-            edtCityName.setText("")
-            edtStateName.setText("")
-            edtPopulation.setText("")
+            if((!cityID.equals(""))&&(!cityName.equals(""))) {
+                firebaseOp.updateCityName(cityID, cityName)
+
+                edtID.setText("")
+                edtCityName.setText("")
+                edtStateName.setText("")
+                edtPopulation.setText("")
+            }else{
+                Snackbar.make(v, "Some fields are empty", Snackbar.LENGTH_SHORT).show()
+            }
         }
 
         return v
