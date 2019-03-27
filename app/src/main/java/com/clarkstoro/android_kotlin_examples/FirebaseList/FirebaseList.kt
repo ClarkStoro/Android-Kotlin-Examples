@@ -90,7 +90,6 @@ class FirebaseList : Fragment() {
         //REALTIME RECYCLERVIEW UPDATES
         getDataRealtime(firebaseOp)
 
-
         //ADD A CITY
         v.btnAdd.setOnClickListener{v ->
             val edtID = activity?.findViewById(R.id.edtCityID) as EditText
@@ -126,11 +125,6 @@ class FirebaseList : Fragment() {
         }
 
         return v
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
     }
 
 

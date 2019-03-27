@@ -93,7 +93,7 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         return products
     }//end retrieveAllData
 
-    //Delete records with the IDProduct passed, in case there are ultiple record with the same IDProduct every record will be delete!
+    //Delete records with the IDProduct passed, in case there are multiple record with the same IDProduct every record will be delete!
     fun deleteData(IDProduct : Int) : Boolean{
         var result = false
         try {

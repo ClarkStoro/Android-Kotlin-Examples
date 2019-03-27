@@ -15,20 +15,6 @@ import com.clarkstoro.android_kotlin_examples.R
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [FirebaseCloudMessagging.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [FirebaseCloudMessagging.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
 class FirebaseCloudMessagging : Fragment() {
 
     private var listener: OnFragmentInteractionListener? = null
@@ -59,16 +45,10 @@ class FirebaseCloudMessagging : Fragment() {
     }
 
 
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
-
-
     override fun onDetach() {
         super.onDetach()
         listener = null
     }
-
 
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

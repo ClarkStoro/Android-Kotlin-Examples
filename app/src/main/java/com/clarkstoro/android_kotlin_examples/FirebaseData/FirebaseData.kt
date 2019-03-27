@@ -96,16 +96,11 @@ class FirebaseData : Fragment() {
         return v
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
 
     override fun onDetach() {
         super.onDetach()
         listener = null
     }
-
 
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

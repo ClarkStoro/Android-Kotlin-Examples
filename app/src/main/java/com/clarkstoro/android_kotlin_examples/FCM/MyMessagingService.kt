@@ -42,7 +42,6 @@ class MyMessagingService : FirebaseMessagingService() {
     }
 
 
-
     /**
      * Create and show a simple notification containing the received FCM message.
      *
@@ -81,7 +80,6 @@ class MyMessagingService : FirebaseMessagingService() {
 
 
     companion object {
-
         private const val TAG = "MyMsgService"
     }
 }

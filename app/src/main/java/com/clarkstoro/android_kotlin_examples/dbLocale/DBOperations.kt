@@ -95,10 +95,4 @@ class DBOperations(val context: Context, val view: View) {
         }
         return result
     }//end deleteAllData
-
-
-
-
-
-
 }

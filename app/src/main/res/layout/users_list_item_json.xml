@@ -6,23 +6,22 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffff00"
         android:paddingTop="5dp"
         android:paddingBottom="5dp">
 
 
     <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:id="@+id/imgAvatar"
             android:layout_weight="1" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:color/holo_orange_dark" android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp" app:srcCompat="@android:color/darker_gray"/>
     <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/txtIDJSON" android:background="#00ff00"
-            android:textSize="24sp"
+            android:layout_height="wrap_content" android:id="@+id/txtIDJSON"
+            android:textSize="18sp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:layout_marginEnd="8dp"
@@ -31,13 +30,21 @@
             app:layout_constraintHorizontal_bias="0.05"/>
     <TextView
             android:text="TextView"
-            android:layout_height="wrap_content" android:id="@+id/txtNameJSON" android:background="#00ff00"
-            android:textSize="24sp"
+            android:layout_height="wrap_content" android:id="@+id/txtNameJSON"
+            android:textSize="18sp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:layout_width="wrap_content" tools:layout_editor_absoluteY="0dp"
+            android:layout_width="wrap_content"
             app:layout_constraintStart_toEndOf="@+id/imgAvatar" android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.05"/>
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.05"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/background_dark"
+            android:id="@+id/view"
+            tools:layout_editor_absoluteX="127dp" app:layout_constraintTop_toBottomOf="@+id/txtIDJSON"
+            android:layout_marginTop="10dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

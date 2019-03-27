@@ -26,11 +26,6 @@ class Translations : Fragment() {
         return inflater.inflate(R.layout.fragment_translations, container, false)
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
-    }
-
 
     override fun onDetach() {
         super.onDetach()
@@ -41,5 +36,4 @@ class Translations : Fragment() {
         // TODO: Update argument type and name
         fun onFragmentInteraction(uri: Uri)
     }
-
 }

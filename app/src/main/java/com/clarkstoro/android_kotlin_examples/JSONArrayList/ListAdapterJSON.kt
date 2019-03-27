@@ -21,8 +21,8 @@ class ListAdapterJSON (val users : Users, val context: Context) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        holder.itemView.txtNameJSON.text = users.data.get(position).first_name + users.data.get(position).last_name
-        holder.itemView.txtIDJSON.text = "" + users.data.get(position).id
+        holder.itemView.txtNameJSON.text = users.data.get(position).first_name + " "+ users.data.get(position).last_name
+        holder.itemView.txtIDJSON.text = "ID: " + users.data.get(position).id
         //Download the image from the correct URL and set it to the ImageView
         Picasso.get().load(users.data.get(position).avatar).into(holder.itemView.imgAvatar)
 
