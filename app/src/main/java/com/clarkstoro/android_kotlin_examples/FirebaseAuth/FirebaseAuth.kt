@@ -145,6 +145,16 @@ class FirebaseAuth : Fragment() {
             }
         }
 
+        val btnDeleteAccount = v?.findViewById(R.id.btnDeleteAccount) as Button
+        btnDeleteAccount.setOnClickListener {
+            if(auth.currentUser != null){
+                auth.currentUser?.delete()
+                updateUI(null)
+                Toast.makeText(context, "Account deleted", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
         return v
     }
 
