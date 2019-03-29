@@ -11,10 +11,6 @@ Here's what you can find:<br>
 &emsp;• Firebase Cloud Messaging<br>
 &emsp;• Firebase AdMob<br>
 
-## !!ATTENTION!!
-
-If you try to run this code you will get an error because in this repo I did not include all the credentials files. I recommend you to build your own app and to only check my code.
-
 ## Versioning
 
 I use [SemVer](http://semver.org/) for versioning.
