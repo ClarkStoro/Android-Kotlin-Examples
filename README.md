@@ -12,9 +12,7 @@ Here's what you can find:<br>
 &emsp;• Firebase AdMob<br>
 
 ### Screenshots
-<img src="/images/screenHome.jpg?raw=true" width="120">
-<img src="/images/screenNavBar.jpg?raw=true" width="120">
-<img src="/images/screenFirebase.jpg?raw=true" width="120">
+<img src="/images/screenHome.jpg?raw=true" width="120"> <img src="/images/screenNavBar.jpg?raw=true" width="120">  <img src="/images/screenFirebase.jpg?raw=true" width="120">
 
 ## Versioning
 
